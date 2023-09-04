@@ -2,7 +2,7 @@
   "name": "xml-simple-parser",
   "repository": "github:fabiospampinato/xml-simple-parser",
   "description": "A simple and tiny XML parser and stringifier.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "dist/index.js",
   "exports": "./dist/index.js",
