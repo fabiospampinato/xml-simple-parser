@@ -82,14 +82,14 @@ const Grammar = grammar<Node, ExplicitRule<NodeRoot>> ( ({ match, and, or, star,
 
   const TagStackInit = match ( /(?:)/, (): undefined => { TAG_STACK.length = 0 } );
 
-  const AttributeString = match ( /([a-zA-Z0-9_-][a-zA-Z0-9:_-]*)=(["'])(.*?)\2\s*/, ( _, name, quote, value ): NodeAttribute => ({ type: 'attribute', name, value }) );
+  const AttributeString = match ( /([a-zA-Z0-9_-][a-zA-Z0-9:_-]*)=(["'])([^]*?)\2\s*/, ( _, name, quote, value ): NodeAttribute => ({ type: 'attribute', name, value }) );
   const AttributeBoolean = match ( /([a-zA-Z0-9_-][a-zA-Z0-9:_-]*)(?=\s|\/|>)\s*/, ( _, name ): NodeAttribute => ({ type: 'attribute', name, value: true }) );
   const Attribute = or ([ AttributeString, AttributeBoolean ]);
   const Attributes = star ( Attribute, ( attributes ): NodeAttributes => makeAttributes ( attributes ) );
 
   const Prolog = and ( [/^\s*<\?xml\s*/, Attributes, /\?>\s*/], ( nodes ): NodeProlog => ({ type: 'prolog', attributes: nodes[0]['values'] }) );
 
-  const Doctype = match ( /\s*<!DOCTYPE\s*((?:".*?"|'.*?'|[a-zA-Z ]+)*)>\s*/, ( _, value ): NodeDoctype => ({ type: 'doctype', value, values: makeDoctypeValues ( value ) }) );
+  const Doctype = match ( /\s*<!DOCTYPE\s*((?:"[^]*?"|'[^]*?'|[a-zA-Z ]+)*)>\s*/, ( _, value ): NodeDoctype => ({ type: 'doctype', value, values: makeDoctypeValues ( value ) }) );
 
   const Comment = match ( /<!--((?:(?!-->).)*)-->/, ( _, value ): NodeComment => ({ type: 'comment', value }) );
 
