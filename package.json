@@ -26,12 +26,12 @@
     "stringifier"
   ],
   "dependencies": {
-    "grammex": "^3.1.2"
+    "grammex": "^3.1.12"
   },
   "devDependencies": {
     "benchloop": "^2.1.1",
-    "fava": "^0.3.1",
-    "tsex": "^3.0.1",
-    "typescript": "^5.2.2"
+    "fava": "^0.3.5",
+    "tsex": "^4.0.2",
+    "typescript": "^5.9.3"
   }
 }
