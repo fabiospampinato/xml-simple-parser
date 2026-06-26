@@ -3,7 +3,7 @@
   "repository": "github:fabiospampinato/xml-simple-parser",
   "description": "A simple and tiny XML parser and stringifier.",
   "license": "MIT",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "main": "dist/index.js",
   "exports": "./dist/index.js",
