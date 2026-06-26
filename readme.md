@@ -5,7 +5,7 @@ A simple and tiny XML parser and stringifier.
 ## Install
 
 ```sh
-npm install --save xml-simple-parser
+npm install xml-simple-parser
 ```
 
 ## Usage
@@ -99,8 +99,8 @@ const xml = XML.stringify ( ast );
 
 // It can check if a string is a valid XML string, according to this parser anyway
 
-validate ( svg ); // => true
-validate ( xml ); // => true
+XML.validate ( svg ); // => true
+XML.validate ( xml ); // => true
 ```
 
 ## License
