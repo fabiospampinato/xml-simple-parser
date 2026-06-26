@@ -91,7 +91,7 @@ const Grammar = grammar<Node, ExplicitRule<NodeRoot>> ( ({ match, and, or, star,
 
   const Doctype = match ( /\s*<!DOCTYPE\s*((?:"[^]*?"|'[^]*?'|[a-zA-Z ]+)*)>\s*/, ( _, value ): NodeDoctype => ({ type: 'doctype', value, values: makeDoctypeValues ( value ) }) );
 
-  const Comment = match ( /<!--((?:(?!-->).)*)-->/, ( _, value ): NodeComment => ({ type: 'comment', value }) );
+  const Comment = match ( /<!--((?:(?!-->)[^])*)-->/, ( _, value ): NodeComment => ({ type: 'comment', value }) );
 
   const VoidElementName = match ( /([a-zA-Z0-9_-][a-zA-Z0-9:_-]*)/, ( _, name ): NodeElementTag => ({ type: 'tag', name }) );
   const VoidElement = and ( ['<', VoidElementName, /\s*/, Attributes, '/>'], ( nodes ): NodeElement => ({ type: 'element', name: nodes[0]['name'], attributes: nodes[1]['values'], children: [], void: true }) );
